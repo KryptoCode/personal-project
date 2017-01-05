@@ -9,7 +9,7 @@ export default function() {
 		  "date_joined": "3/27/2016"
 		}, {
 		  "id": 2,
-		  "first_name": "Nicole",
+		  "first_name": "Nicole M",
 		  "last_name": "Fields",
 		  "email": "nfields1@shinystat.com",
 		  "avatar": "https://robohash.org/voluptatemquodvoluptatibus.bmp?size=204x204&set=set1",
