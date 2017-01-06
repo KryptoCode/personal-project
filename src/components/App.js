@@ -4,7 +4,7 @@ import UserProfile from '../containers/profile';
 import Sidebar from './Sidebar';
 import Setup from './Setup';
 import Signin from './Signin';
-import Signup from './RegisterForm';
+import Signup from './SignupPage';
 import ContentContainer from './ContentContainer';
 
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
