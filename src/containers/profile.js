@@ -22,15 +22,8 @@ class userProfile extends Component {
 
 	render() {
 		return (
-			<div id="sidebar-container" className="wrapper">
-				<div className="column-12">
-					<div className="row">
-						<h1>LOAD VR</h1>
-					</div>
-					<div className="row">
-						{this.loadUser()}
-					</div>
-				</div>
+			<div className="userProfileContainer">
+				{this.loadUser()}
 			</div>
 		);
 	}

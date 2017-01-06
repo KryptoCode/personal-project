@@ -20,8 +20,6 @@
   box-sizing: border-box; }
 
 body {
-  color: #fff;
-  background-color: #2C3E50;
   margin: 0;
   padding: 0; }
 
@@ -30,21 +28,20 @@ img {
   max-width: 100%;
   height: auto !important; }
 
-.userDetails {
-  background-color: #4E5D6C;
-  height: 400px;
-  padding: 25px 25px; }
-  .userDetails div {
-    margin: 16px 0; }
-
-.userAvatar {
-  background-color: #2C3E50;
-  margin: 25px auto;
-  border: 6px solid #2C3E50; }
+.userProfileContainer {
+  width: 90%;
+  margin: 20px auto; }
+  .userProfileContainer .userAvatar {
+    margin: 1em 0px;
+    border: 6px solid; }
+  .userProfileContainer .userDetails {
+    height: 400px;
+    padding: 25px 0px; }
+    .userProfileContainer .userDetails div {
+      margin: 16px 0; }
 
 .wrapper {
-  width: 100%;
-  margin: 0 auto; }
+  width: 100%; }
 
 [class*='column-'] {
   float: left;
@@ -55,21 +52,12 @@ img {
 .aFrameBox {
   height: 100vh; }
 
-#content-container {
-  height: 100vh; }
-
 #sidebar-container {
-  width: 100%;
-  height: 100vh;
-  min-width: 200px;
-  max-width: 266px;
-  background-color: #4E5D6C;
-  padding: 20px 28px; }
+  width: 80%;
+  padding: 20px 0px;
+  margin: auto; }
   #sidebar-container h1 {
-    text-align: center;
-    color: #fff; }
-  #sidebar-container form {
-    margin-top: 35%; }
+    text-align: center; }
   #sidebar-container input {
     height: 35px;
     width: 100%;
@@ -80,22 +68,37 @@ img {
   #sidebar-container input[type=password] {
     padding: 0 10px;
     margin: 4px 0; }
+  #sidebar-container .form-horizontal,
+  #sidebar-container .form-group {
+    margin-left: 0;
+    margin-right: 0; }
 
-#submit-btn {
-  font-size: 1em;
-  color: #fff;
-  background-color: #DF691A;
-  border-color: transparent;
-  text-align: center;
-  margin-top: 15px; }
+.signInContainer {
+  width: 80%;
+  margin: 4em auto; }
+  .signInContainer #submit-btn {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 10px; }
+  .signInContainer #register-btn {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 10px; }
 
-#register-btn {
-  font-size: 1em;
-  color: #fff;
-  background-color: #2C3E50;
-  border: transparent;
-  text-align: center;
-  margin-top: 15px; }
+.setupFormContainer {
+  width: 80%;
+  margin: 20px auto;
+  clear: none; }
+  .setupFormContainer label {
+    float: left;
+    clear: none;
+    display: block;
+    padding: 2px 1em 0 0; }
+  .setupFormContainer input[type=radio],
+  .setupFormContainer input.radio {
+    float: left;
+    clear: none;
+    margin: 2px 0 0 2px; }
 
 @media only screen and (min-width: 30em) {
   .wrapper {
