@@ -1,6 +1,7 @@
 import React from 'react';
 import map from 'lodash/map';
 import classnames from 'classnames';
+import validateInput from '../../server/shared/validations/signupValid';
 
 
 class RegisterForm extends React.Component {
@@ -25,13 +26,26 @@ class RegisterForm extends React.Component {
 		this.setState({ [e.target.name]: e.target.value});
 	}
 
+	isValid() {
+		const { errors, isValid } = validateInput(this.state);
+
+		if (!isValid) {
+			this.setState({ errors });
+		}
+
+		return isValid;
+	}
+
 	onSubmit(e) {
 		e.preventDefault();
-		this.setState({ errors: {}, isLoading: true });
-		this.props.userSignupRequest(this.state).then(
-			() => {},
-			({ data }) => this.setState({ errors: data, isLoading: false })
-		);
+
+		if (this.isValid()) {
+			this.setState({ errors: {}, isLoading: true });
+			this.props.userSignupRequest(this.state).then(
+				() => {},
+				(err) => this.setState({ errors: err.response.data, isLoading: false })
+			);
+		}
 	}
 
 	render() {

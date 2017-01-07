@@ -11,6 +11,10 @@ module.exports = {
 		publicPath: '/',
 		filename: 'bundle.js'
 	},
+	plugins: [
+    	new webpack.NoErrorsPlugin(),
+    	new webpack.optimize.OccurenceOrderPlugin()
+  	],
 	module: {
 		noParse: [
       		/node_modules\/aframe\/dist\/aframe.js/,
@@ -19,6 +23,14 @@ module.exports = {
 			test: /\.jsx?$/,
 			exclude: /node_modules/,
 			loader: 'react-hot!babel'
+		},
+		{
+			test: /\.js$/,
+			include: [
+				path.join(__dirname, '/server/shared'),
+				path.join(__dirname, '/dist')
+				],
+			loaders: [ 'react-hot', 'babel']
 		},
 		{
             test: /\.scss$/,
