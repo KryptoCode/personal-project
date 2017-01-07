@@ -4,8 +4,6 @@ require('babel-polyfill');
 
 module.exports = {
 	entry: [
-	'webpack-dev-server/client?http://localhost:8080',
-	'webpack/hot/only-dev-server',
 	'./src/index.jsx'
 	],
 	output: {
@@ -41,12 +39,7 @@ module.exports = {
 	},
 	resolveLoader: {
     fallback: [path.join(__dirname, 'node_modules')]
-  	}, 
-	devServer: {
-		contentBase: './dist',
-		hot: true
-	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin()
-	]
+  	} 
+	
+	
 };

@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import map from 'lodash/map';
+import classnames from 'classnames';
 
 
-class RegisterForm extends Component {
+class RegisterForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -10,6 +12,8 @@ class RegisterForm extends Component {
 			userEmail: '',
 			password: '',
 			passwordConfirmation: '',
+			errors: {},
+			isLoading: false
 
 		}
 
@@ -23,13 +27,18 @@ class RegisterForm extends Component {
 
 	onSubmit(e) {
 		e.preventDefault();
-		this.props.userSignupRequest(this.state);
+		this.setState({ errors: {}, isLoading: true });
+		this.props.userSignupRequest(this.state).then(
+			() => {},
+			({ data }) => this.setState({ errors: data, isLoading: false })
+		);
 	}
 
 	render() {
+		const { errors } = this.state;
 		return (
 			<form onSubmit={this.onSubmit}>
-				<div className="form-group">
+				<div className={classnames("form-group", { 'has-error': errors.firstName})}>
 					<label className="control-label">First Name:</label>
 					<input
 						value={this.state.firstName}
@@ -38,6 +47,10 @@ class RegisterForm extends Component {
 						name="firstName"
 						className="form-control"
 						/>
+						{errors.firstName && <span className="help-block">{errors.firstName}</span>}
+				</div>
+
+				<div className={classnames("form-group", { 'has-error': errors.lastName})}>
 					<label className="control-label">Last Name:</label>
 					<input 
 					value={this.state.lastName}
@@ -46,6 +59,9 @@ class RegisterForm extends Component {
 					name="lastName"
 					className="form-control"
 					/>
+					{errors.lastName && <span className="help-block">{errors.lastName}</span>}
+				</div>
+				<div className={classnames("form-group", { 'has-error': errors.userEmail})}>
 					<label className="control-label">E-Mail:</label>
 					<input 
 					value={this.state.userEmail}
@@ -54,6 +70,9 @@ class RegisterForm extends Component {
 					name="userEmail"
 					className="form-control"
 					/>
+					{errors.userEmail && <span className="help-block">{errors.userEmail}</span>}
+				</div>
+				<div className={classnames("form-group", { 'has-error': errors.password})}>
 					<label className="control-label">Password:</label>
 					<input
 						value={this.state.password}
@@ -62,6 +81,9 @@ class RegisterForm extends Component {
 						name="password"
 						className="form-control"
 						/>
+						{errors.password && <span className="help-block">{errors.password}</span>}
+				</div>
+				<div className={classnames("form-group", { 'has-error': errors.passwordConfirmation})}>
 					<label className="control-label">Password Confirmation:</label>
 					<input 
 					value={this.state.passwordConfirmation}
@@ -70,10 +92,10 @@ class RegisterForm extends Component {
 					name="passwordConfirmation"
 					className="form-control"
 					/>
-					
+					{errors.passwordConfirmation && <span className="help-block">{errors.passwordConfirmation}</span>}
 				</div>
 				<div className="form-group">
-					<button className="btn btn-primary btn-lg">
+					<button disabled={this.state.isLoading} className="btn btn-primary btn-lg">
 						Sign up
 					</button>		
 				</div>
