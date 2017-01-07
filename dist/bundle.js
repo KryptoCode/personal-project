@@ -107758,7 +107758,9 @@
 
 				if (this.isValid()) {
 					this.setState({ errors: {}, isLoading: true });
-					this.props.userSignupRequest(this.state).then(function () {}, function (err) {
+					this.props.userSignupRequest(this.state).then(function () {
+						_this2.context.router.push('/');
+					}, function (err) {
 						return _this2.setState({ errors: err.response.data, isLoading: false });
 					});
 				}
@@ -107894,6 +107896,10 @@
 
 	RegisterForm.propTypes = {
 		userSignupRequest: _react2.default.PropTypes.func.isRequired
+	};
+
+	RegisterForm.contextTypes = {
+		router: _react2.default.PropTypes.object.isRequired
 	};
 
 	exports.default = RegisterForm;
