@@ -10,7 +10,7 @@ class RegisterForm extends React.Component {
 		this.state = {
 			firstName: '',
 			lastName: '',
-			userEmail: '',
+			email: '',
 			password: '',
 			passwordConfirmation: '',
 			errors: {},
@@ -43,9 +43,13 @@ class RegisterForm extends React.Component {
 			this.setState({ errors: {}, isLoading: true });
 			this.props.userSignupRequest(this.state).then(
 				() => {
+					this.props.addFlashMessage({
+						type: 'success',
+						text: 'You signed up successfully.'
+					});
 					this.context.router.push('/');
 				},
-				(err) => this.setState({ errors: err.response.data, isLoading: false })
+				(err) => this.setState({ errors: err.data, isLoading: false })
 			);
 		}
 	}
@@ -77,16 +81,16 @@ class RegisterForm extends React.Component {
 					/>
 					{errors.lastName && <span className="help-block">{errors.lastName}</span>}
 				</div>
-				<div className={classnames("form-group", { 'has-error': errors.userEmail})}>
+				<div className={classnames("form-group", { 'has-error': errors.email})}>
 					<label className="control-label">E-Mail:</label>
 					<input 
-					value={this.state.userEmail}
+					value={this.state.email}
 					onChange={this.onChange}
 					type="text"
-					name="userEmail"
+					name="email"
 					className="form-control"
 					/>
-					{errors.userEmail && <span className="help-block">{errors.userEmail}</span>}
+					{errors.email && <span className="help-block">{errors.email}</span>}
 				</div>
 				<div className={classnames("form-group", { 'has-error': errors.password})}>
 					<label className="control-label">Password:</label>
@@ -121,7 +125,8 @@ class RegisterForm extends React.Component {
 }
 
 RegisterForm.propTypes = {
-	userSignupRequest: React.PropTypes.func.isRequired
+	userSignupRequest: React.PropTypes.func.isRequired,
+	addFlashMessage: React.PropTypes.func.isRequired
 }
 
 RegisterForm.contextTypes = {

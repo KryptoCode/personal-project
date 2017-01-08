@@ -12,11 +12,11 @@ export default function validateInput(data) {
 		if (Validator.isEmpty(data.lastName ? data.lastName : '')) {
 			errors.lastName = 'This field is required';
 		}  
-		if (Validator.isEmpty(data.userEmail ? data.userEmail : '')) {
-			errors.userEmail = 'This field is required';
+		if (Validator.isEmpty(data.email ? data.email : '')) {
+			errors.email = 'This field is required';
 		} 
-		if (!Validator.isEmail(data.userEmail ? data.userEmail : '')) {
-			errors.userEmail = 'Email is invalid';
+		if (!Validator.isEmail(data.email ? data.email : '')) {
+			errors.email = 'Email is invalid';
 		}
 		if (Validator.isEmpty(data.password)) {
 			errors.password = 'This field is required';

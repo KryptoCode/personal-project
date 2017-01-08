@@ -6,6 +6,7 @@ import Setup from './Setup';
 import Signin from './Signin';
 import Signup from './SignupPage';
 import ContentContainer from './ContentContainer';
+import FlashMessagesList from './flash/FlashMessagesList';
 
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 
@@ -31,6 +32,7 @@ const Container = (props) => (
 			<div className="column-3">
 				<div id="sidebar-container">
 					<h1>The Construct</h1>
+					<FlashMessagesList />
 					{props.children}
 				</div>
 			</div>

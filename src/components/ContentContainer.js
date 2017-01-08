@@ -20,7 +20,7 @@ class ContentContainer extends Component {
         			<Entity light={{type: 'directional', intensity: 0.5}} position='-1 1 0'/>
         			<Entity light={{type: 'directional', intensity: 1}} position='1 1 0'/>
 			      	
-			   
+
 
 			      	<Ground src="url(http://localhost:8080/360/floorWT.jpg)" repeat="5000 5000"/>
 			      	<Sky src="url(http://localhost:8080/360/matrix.png)"/>

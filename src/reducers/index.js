@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import UserReducer from './reducer-users';
+import flashMessages from './flashMessages';
 
 const allReducers = combineReducers({
-	users: UserReducer
+	flashMessages
 });
 
 export default allReducers;
